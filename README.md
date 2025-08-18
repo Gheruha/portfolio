@@ -1,7 +1,4 @@
-# Smart Database
+# Personal Portfolio
 
-> Your Supabase toolkit for faster, more reliable database maintenance.
+> Projects & personal blog.
 
-## Status:
-
-** In Work...**
