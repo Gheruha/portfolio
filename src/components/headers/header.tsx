@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { ThemeToggle } from '../theme/theme.toggler';
 import { DatabaseZap } from 'lucide-react';
-import { Button } from '../ui/button';
 
 export function Header() {
   return (

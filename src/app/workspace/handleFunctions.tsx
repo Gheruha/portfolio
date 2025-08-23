@@ -32,7 +32,7 @@ export function useSidebarData() {
           group_name: g.group_name,
           icon: g.icon,
           open_icon: g.open_icon,
-          position: g.position,
+          position: g.pos,
           sidebar_items: isSidebarItemArray(g.sidebar_items)
             ? g.sidebar_items
             : [],
