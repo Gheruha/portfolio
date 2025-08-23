@@ -12,7 +12,7 @@ export default function Home() {
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-[12px] row-start-2 sm:items-center">
           <h1 className="text-3xl font-semibold motion-preset-focus motion-duration-1000">
-            Smart Database
+            Gheruha's Portfolio
           </h1>
           <div className="flex flex-col space-y-0">
             <TextEffect
@@ -47,12 +47,11 @@ export default function Home() {
                 },
               }}
             >
-              Your Supabase toolkit for faster, more reliable database
-              maintenance.
+              Here you'll find all my projects & blog posts.
             </TextEffect>
           </div>
           <div className="flex space-x-4 motion-preset-slide-up ">
-            <Link href="/auth?mode=SignUp">
+            <Link href="/workspace">
               <Button className="">Get started</Button>
             </Link>
             <div className="relative">

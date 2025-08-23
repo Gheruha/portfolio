@@ -14,13 +14,7 @@ export function Header() {
         </Link>
       </div>
       <div className="flex space-x-2">
-        <ThemeToggle />
-        <Link href={'/auth?mode=signIn'}>
-          <Button variant={'outline'}>Sign In</Button>
-        </Link>
-        <Link href={'/auth?mode=signUp'}>
-          <Button>Sign Up</Button>
-        </Link>
+        <ThemeToggle /> 
       </div>
     </header>
   );

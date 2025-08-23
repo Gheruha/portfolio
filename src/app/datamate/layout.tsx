@@ -1,5 +1,5 @@
 'use client';
-import { WorkspaceHeader } from '@/components/headers/workspaceHeader';
+import { Header } from '@/components/headers/header';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar/app-sidebar';
 
@@ -10,7 +10,7 @@ interface DataMateLayoutProps {
 export default function DataMateLayout({ children }: DataMateLayoutProps) {
   return (
     <SidebarProvider>
-      <WorkspaceHeader />
+      <Header />
       <AppSidebar />
       <main className="w-full h-[100vh]">
         <SidebarTrigger className="mt-14" />
