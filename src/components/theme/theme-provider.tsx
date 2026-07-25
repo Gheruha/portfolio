@@ -1,18 +1,29 @@
 'use client';
 
-import { useEffect, useState, useMemo } from 'react';
+import { useSyncExternalStore } from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import type { ThemeProviderProps } from 'next-themes';
 
+function subscribe() {
+  return () => {};
+}
+
+function getClientSnapshot() {
+  return true;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  const [mounted, setMounted] = useState<boolean>(false);
+  const mounted = useSyncExternalStore(
+    subscribe,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const shouldRender = useMemo(() => mounted, [mounted]);
-  if (!shouldRender) return null;
+  if (!mounted) return null;
 
   return (
     <NextThemesProvider attribute="class" {...props}>
