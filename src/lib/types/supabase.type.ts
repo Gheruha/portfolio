@@ -10,6 +10,6 @@ export interface SidebarStructureDto {
   group_name: string;
   icon: string;
   open_icon: string;
-  position: number;
+  pos: number;
   sidebar_items: Json;
 }

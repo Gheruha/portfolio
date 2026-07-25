@@ -6,7 +6,7 @@ export const getDefaultSidebarOptions = async (): Promise<
   SidebarStructureDto[]
 > => {
   const supabase = await createSupabaseClientApi();
-  const { data, error } = await supabase.rpc('get_sidebar_structure');
+  const { data, error } = await supabase.rpc('get_sidebar_groups');
   console.log('Database call happens', data);
   if (error) {
     console.error('Error while getting sidebar options', error.message);
