@@ -1,9 +1,10 @@
 import { ChatDto } from '@/lib/types/chat.type';
-import { createSupabaseClientApi } from '@/lib/supabase/client';
 import { HistoryItemDto } from '@/lib/types/history.type';
 import { getChatConversationById } from './history.utils';
 
-// Saves both user and bot messages inside db
+const DEFAULT_SYSTEM_PROMPT =
+  'You are a helpful assistant for this portfolio application.';
+
 export const saveMessage = async ({
   conversationId,
   sender,
@@ -13,64 +14,36 @@ export const saveMessage = async ({
   sender: 'user' | 'bot';
   content: string;
 }): Promise<void> => {
-  const supabase = await createSupabaseClientApi();
-
-  const { error } = await supabase.from('messages').insert([
-    {
-      conversation_id: conversationId,
-      sender,
-      content,
-    },
-  ]);
-
-  if (error) {
-    console.error(
-      `Error saving ${sender} message to conversation ${conversationId}:`,
-      error,
-    );
-  }
+  void conversationId;
+  void sender;
+  void content;
+  return;
 };
 
-// Generates
 export const generateChatBotReply = async ({
   promptKey,
   userMessage,
   conversationId,
 }: ChatDto): Promise<string> => {
+  void promptKey;
   if (!conversationId) {
     throw new Error('Missing conversationId');
   }
 
-  const supabase = await createSupabaseClientApi();
-
-  //Load the system prompt
-  const { data: systemPrompt, error: rpcErr } = await supabase.rpc(
-    'get_prompt',
-    { p_key: promptKey },
-  );
-  if (rpcErr || !systemPrompt) {
-    console.error('No prompt for key', rpcErr);
-    throw new Error('System prompt not found');
-  }
-
-  //Load full history from DB
   const history: HistoryItemDto[] =
     await getChatConversationById(conversationId);
 
-  //Turn HistoryItemDto[] into OpenAI messages
   const historyMessages = history.map(m => ({
     role: m.from === 'bot' ? 'assistant' : 'user',
     content: m.text,
   }));
 
-  //Build the final messages array
   const messages = [
-    { role: 'system', content: systemPrompt },
+    { role: 'system', content: DEFAULT_SYSTEM_PROMPT },
     ...historyMessages,
     { role: 'user', content: userMessage },
   ];
 
-  //Call OpenAI with the entire context
   const res = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {

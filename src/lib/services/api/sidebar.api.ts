@@ -1,4 +1,4 @@
-import { SidebarStructureDto } from '@/lib/types/supabase.type';
+import { SidebarStructureDto } from '@/lib/types/sidebar.type';
 
 class SidebarService {
   private async fetchApi<T>(

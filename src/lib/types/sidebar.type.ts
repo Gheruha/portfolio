@@ -6,6 +6,11 @@ export interface SidebarItemDto {
   function: string;
 }
 
+export type SidebarStructureDto = Omit<SidebarGroup, 'position'> & {
+  pos: number;
+  sidebar_items: unknown;
+};
+
 export interface SidebarGroup {
   group_id: string;
   group_name: string;

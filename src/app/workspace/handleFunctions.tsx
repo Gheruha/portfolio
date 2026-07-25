@@ -2,8 +2,11 @@
 
 import { useEffect } from 'react';
 import { sidebarService } from '@/lib/services/api/sidebar.api';
-import { SidebarGroup, SidebarItemDto } from '@/lib/types/sidebar.type';
-import { SidebarStructureDto } from '@/lib/types/supabase.type';
+import {
+  SidebarGroup,
+  SidebarItemDto,
+  SidebarStructureDto,
+} from '@/lib/types/sidebar.type';
 import { useSidebarStore } from '@/lib/store/sidebar.store';
 
 // Type-guard to confirm we really have an array of SidebarItemDto
